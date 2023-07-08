@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mysql-replica
+  labels:
+    app: mysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+        app: mysql
+  template:
+    metadata:
+      labels:
+          app: mysql
+    spec:
+      containers:
+      - name: mysql-pod-container
+        image: 967553690170.dkr.ecr.us-east-1.amazonaws.com/newdatabase:v0.2
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: tarun
+        ports:
+        - containerPort: 3306
+        
