@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: web-replica
+  name: web-deployment
   labels:
     app: employees
     version: v1
@@ -9,13 +9,13 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-        app: employees
-        version: v1
+      app: employees
+      version: v1
   template:
     metadata:
       labels:
-          app: employees
-          version: v1
+        app: employees
+        version: v1
     spec:
       containers:
       - image: 967553690170.dkr.ecr.us-east-1.amazonaws.com/newapp:v0.2
